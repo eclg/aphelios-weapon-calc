@@ -4,11 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel ="stylesheet" href="style.css">
+
 </head>
 <body>
-    <h1>My Website</h1>
-    <input id="userInput" type="text">
-    <button id="clickMe" onClick="bfs()" type="button">Submit</button>
+    <div id="weapon-queue" class="display">
+    </div>
+
+    <div class="selector">
+        <button class="weapon-btn" onclick="addToQueue('green')"><img src="images/green.webp" alt="Calibrum / Green"></button>
+        <button class="weapon-btn" onclick="addToQueue('red')"><img src="images/red.webp" alt="Severum / Red"></button>
+        <button class="weapon-btn" onclick="addToQueue('purple')"><img src="images/purple.webp" alt="Gravitum / Purple"></button>
+        <button class="weapon-btn" onclick="addToQueue('blue')"><img src="images/blue.webp" alt="Infernum / Blue"></button>
+        <button class="weapon-btn" onclick="addToQueue('white')"><img src="images/white.webp" alt="Crescendum / White"></button> 
+    </div>
+
+    <script src="script.js"></script>
     <script src="algorithm.js"></script>
 </body>
 </html>
