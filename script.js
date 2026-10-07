@@ -6,7 +6,7 @@ const hashmap = new Map([
     ["white", "images/white.webp"]
 ])
 
-let weaponQueue = new Set();
+export let weaponQueue = new Set();
 
 function addToQueue(weapon) {
     if (weaponQueue.has(weapon) || weaponQueue.size === 5) {
@@ -34,3 +34,10 @@ function addToQueue(weapon) {
 
     queueContainer.appendChild(newButton);
 }
+
+document.querySelectorAll('.weapon-btn').forEach(button => {
+    button.addEventListener('click', (event) => {
+        const weapon = button.getAttribute('data-weapon');
+        addToQueue(weapon);
+    });
+});

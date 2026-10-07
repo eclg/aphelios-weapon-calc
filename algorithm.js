@@ -1,3 +1,5 @@
+import { weaponQueue } from './script.js'
+
 const optimalSet = new Set([
     "red,white,green,purple,blue",
     "white,red,green,purple,blue"
@@ -6,6 +8,16 @@ const optimalSet = new Set([
 const optimalOrderWG = new Set([
     "white,green,purple,blue,red",
     "green,white,purple,blue,red",
+])
+
+const starter = new Set([
+    "green,red,purple,blue,white",
+    "red,green,purple,blue,white"
+])
+
+const optimalOrderPB = new Set([
+    "purple,blue,red,white,green",
+    "blue,purple,red,white,green"
 ])
 
 function pushBack(arr, idx) {
@@ -22,44 +34,65 @@ function isOptimalSet(arr) {
     else if (optimalSet.has(text)) {
         return "red white";
     }
+    else if (starter.has(text)) {
+        return "starter";
+    }
+    else if (optimalOrderPB.has(text)) {
+        return "purple blue"
+    }
     return 0;
 }
 
+function showOnScreen(stepStr, path, res) {
+    while (stepStr !== undefined) {
+        const stepArr = stepStr.split(",");
+        path.push(stepArr[4]);
+        stepStr = res.get(stepStr);
+    }
+        path.pop();
+        console.log(path.reverse());
+}
+
 function bfs() {
-    const text = document.getElementById("userInput").value;
-    
-    const inputArr = text.split(" ");
-    const inputStr = inputArr.join(",");
+    const weaponQueueArray = [...weaponQueue];
+    const inputStr = weaponQueueArray.join(",");
 
     const queue = [];
     const visited = new Set();
     const res = new Map();
 
+    let path = [];
+
     queue.push(inputStr);
+    // console.log(queue);
 
     while (queue.length !== 0) {
         const currStr = queue.shift();
         if (!visited.has(currStr)) {
             const currArr = currStr.split(",");
+            let stepStr = currStr;
 
             if (isOptimalSet(currArr) === "red white") {
-                let path = [];
-                let stepStr = currStr;
-
-                while (stepStr !== undefined) {
-                    const stepArr = stepStr.split(",");
-                    path.push(stepArr[4]);
-                    stepStr = res.get(stepStr);
-                }
-
-                path.reverse();
-                path.shift();
-                console.log(path);
+                showOnScreen(stepStr, path, res);
                 break;
             }
 
             else if (isOptimalSet(currArr) === "white green") {
+                showOnScreen(stepStr, path, res);
                 path = ["white", "green", "purple", "blue"];
+                console.log(path);
+                break;
+            }
+
+            else if (isOptimalSet(currArr) === "starter") {
+                showOnScreen(stepStr, path, res);
+                path = ["red", "green", "purple", "blue"];
+                console.log(path);
+                break;
+            }
+            else if (isOptimalSet(currArr) === "purple blue") {
+                showOnScreen(stepStr, path, res);
+                path = ["purple", "blue"];
                 console.log(path);
                 break;
             }
@@ -85,3 +118,5 @@ function bfs() {
         }
     }
 }
+
+document.getElementById('bfs-btn').addEventListener('click', bfs);

@@ -1,3 +1,8 @@
+@font-face{
+    font-family: CinzelDecorative;
+    src: url('font/CinzelDecorative-Bold.ttf');
+}
+
 body{
     background-size: cover;
     background-repeat: no-repeat;
@@ -6,13 +11,40 @@ body{
     background-color: #222;
 }
 
+main{
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+
+.border{
+    width: 50%;         
+    height: 70%;     
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 2px solid #333; 
+    padding: 10px;
+    margin: 15px;       
+    border-radius: 8px;
+}
+
+.text{
+    width: fit-content;
+    height: fit-content;
+    font-family: CinzelDecorative;
+    font-size: 30px;
+    color: white;
+    padding: 0 20px;
+}
+
 .weapon-btn{
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 20px;
+    clip-path: circle(50% at 50% 50%);
 }
 
 .weapon-btn img{
     background: transparent;
 }
+
