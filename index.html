@@ -3,29 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Aphelios Weapon Calc</title>
     <link rel ="stylesheet" href="style.css">
 
 </head>
 <body>
     <main>
-        <div class="border">
-            <div class="text">Select Your Weapons</div>
-            <div class="selector">
-                <button class="weapon-btn" data-weapon="green"><img src="images/green.webp" alt="Calibrum / Green"></button>
-                <button class="weapon-btn" data-weapon="red"><img src="images/red.webp" alt="Severum / Red"></button>
-                <button class="weapon-btn" data-weapon="purple"><img src="images/purple.webp" alt="Gravitum / Purple"></button>
-                <button class="weapon-btn" data-weapon="blue"><img src="images/blue.webp" alt="Infernum / Blue"></button>
-                <button class="weapon-btn" data-weapon="white"><img src="images/white.webp" alt="Crescendum / White"></button> 
-            </div>
-            <div class="text">Seleceted Weapons</div>
-            <div id="weapon-queue" class="display"></div>
-            <div class="input-container">
+        <div class="wrapper">
+            <div id="messageID" class="message"></div>
+            <div class="border">
+                <div class="text">Select Your Weapons</div>
+                <div class="selector">
+                    <button class="weapon-btn" data-weapon="green"><img src="images/green.webp" alt="Calibrum / Green"></button>
+                    <button class="weapon-btn" data-weapon="red"><img src="images/red.webp" alt="Severum / Red"></button>
+                    <button class="weapon-btn" data-weapon="purple"><img src="images/purple.webp" alt="Gravitum / Purple"></button>
+                    <button class="weapon-btn" data-weapon="blue"><img src="images/blue.webp" alt="Infernum / Blue"></button>
+                    <button class="weapon-btn" data-weapon="white"><img src="images/white.webp" alt="Crescendum / White"></button> 
+                </div>
+                <div class="text">Seleceted Weapons</div>
+                <div id="weapon-queue" class="display"></div>
+
                 <button id="bfs-btn">Submit</button>
+
+                <div id="result-text" class="text">Result</div>
+                <div id="result-display" class="result"></div>
+                
             </div>
-            <div class="text">Result</div>
-            <div id="result-display" class="result"></div>
-            
         </div>
     </main>
 

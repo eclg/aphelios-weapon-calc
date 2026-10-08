@@ -1,11 +1,3 @@
-const hashmap = new Map([
-    ["green", "images/green.webp"],
-    ["red", "images/red.webp"],
-    ["purple", "images/purple.webp"],
-    ["blue", "images/blue.webp"],
-    ["white", "images/white.webp"]
-])
-
 export let weaponQueue = new Set();
 
 function addToQueue(weapon) {
@@ -19,10 +11,10 @@ function addToQueue(weapon) {
 
     const newButton = document.createElement('button');
     newButton.className = "weapon-btn";
-    newButton.id = '${weapon}';
+    newButton.id = `${weapon}`;
 
     const weaponImg = document.createElement('img');
-    weaponImg.src = hashmap.get(weapon);
+    weaponImg.src = `images/${weapon}.webp`;
     weaponImg.alt = weapon;
     
     newButton.appendChild(weaponImg);
@@ -30,6 +22,8 @@ function addToQueue(weapon) {
     newButton.onclick = function() {
         weaponQueue.delete(weapon);
         newButton.remove();
+        const selectorImg = document.querySelector(`.weapon-btn[data-weapon="${weapon}"] img`);
+        selectorImg.style.filter = '';
     }
 
     queueContainer.appendChild(newButton);
@@ -38,6 +32,9 @@ function addToQueue(weapon) {
 document.querySelectorAll('.weapon-btn').forEach(button => {
     button.addEventListener('click', (event) => {
         const weapon = button.getAttribute('data-weapon');
+
+        const img = button.querySelector('img');
+        img.style.filter = 'grayscale(100%)';
         addToQueue(weapon);
     });
 });

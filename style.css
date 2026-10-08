@@ -1,3 +1,15 @@
+.selector, .display, .result{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.display {
+    height: 80px;
+}
+
 @font-face{
     font-family: CinzelDecorative;
     src: url('font/CinzelDecorative-Bold.ttf');
@@ -11,6 +23,16 @@ body{
     background-color: #222;
 }
 
+.message {
+    padding-left: 16px;
+    width: fit-content;
+    height: fit-content;
+    font-family: CinzelDecorative;
+    font-size: 30px;
+    color: red;
+    padding: 0 20px;
+}
+
 main{
     display: grid;
     place-items: center;
@@ -18,13 +40,15 @@ main{
 }
 
 .border{
-    width: 50%;         
-    height: 70%;     
-    background-color: rgba(0, 0, 0, 0.3);
+    width: 750px;         
+    height: 550px;     
+    background-color: rgba(0, 0, 0, 0.6);
     border: 2px solid #333; 
     padding: 10px;
     margin: 15px;       
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
 }
 
 .text{
@@ -36,15 +60,51 @@ main{
     padding: 0 20px;
 }
 
-.weapon-btn{
+.weapon-btn {
+    padding: 0;
     background: transparent;
     border: none;
+    border-radius: 50%;
+    overflow: hidden;
     cursor: pointer;
-    padding: 20px;
-    clip-path: circle(50% at 50% 50%);
+    flex-shrink: 0;
 }
 
-.weapon-btn img{
+.weapon-btn img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     background: transparent;
 }
 
+#bfs-btn {
+    font-family: 'CinzelDecorative', serif;
+    font-size: 18px;
+    color: #e0e0e0;
+    background: linear-gradient(135deg, #1a1a24 0%, #0d0d12 100%);
+    border: 2px solid #5a4f7c;
+    border-radius: 6px;
+    padding: 10px 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 0 8px rgba(90, 79, 124, 0.3);
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    width: fit-content;
+    
+}
+
+#bfs-btn:hover {
+    color: #ffffff;
+    background: linear-gradient(135deg, #28253c 0%, #13111c 100%);
+    border-color: #9370db; 
+    box-shadow: 0 0 15px rgba(147, 112, 219, 0.6), inset 0 0 12px rgba(147, 112, 219, 0.4);
+    transform: translateY(-2px);
+}
+
+#bfs-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 0 5px rgba(147, 112, 219, 0.4);
+}

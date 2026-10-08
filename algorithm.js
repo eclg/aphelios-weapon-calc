@@ -20,6 +20,11 @@ const optimalOrderPB = new Set([
     "blue,purple,red,white,green"
 ])
 
+const discardGreen = new Set([
+    "red,purple,blue,white,green",
+    "purple,red,blue,white,green"
+])
+
 function pushBack(arr, idx) {
     const temp = arr.splice(idx, 1)[0];
     arr.push(temp);
@@ -40,6 +45,9 @@ function isOptimalSet(arr) {
     else if (optimalOrderPB.has(text)) {
         return "purple blue"
     }
+    else if (discardGreen.has(text)) {
+        return "discard green"
+    }
     return 0;
 }
 
@@ -50,21 +58,24 @@ function showOnScreen(stepStr, path, res) {
         stepStr = res.get(stepStr);
     }
         path.pop();
-        console.log(path.reverse());
 }
 
 function bfs() {
+    const messageText = document.getElementById('messageID');
+    if (weaponQueue.size !== 5) {
+        messageText.textContent  = '<div id="messageID" class="message">Select All Weapons</div>';
+        return;
+    }
+    messageText.innerHTML = ``;
     const weaponQueueArray = [...weaponQueue];
     const inputStr = weaponQueueArray.join(",");
 
     const queue = [];
     const visited = new Set();
     const res = new Map();
-
     let path = [];
 
     queue.push(inputStr);
-    // console.log(queue);
 
     while (queue.length !== 0) {
         const currStr = queue.shift();
@@ -78,22 +89,26 @@ function bfs() {
             }
 
             else if (isOptimalSet(currArr) === "white green") {
+                path.push("blue", "purple", "green", "white");
                 showOnScreen(stepStr, path, res);
-                path = ["white", "green", "purple", "blue"];
-                console.log(path);
                 break;
             }
 
             else if (isOptimalSet(currArr) === "starter") {
+                path.push("blue", "purple", "green", "red");
                 showOnScreen(stepStr, path, res);
-                path = ["red", "green", "purple", "blue"];
-                console.log(path);
                 break;
             }
+
             else if (isOptimalSet(currArr) === "purple blue") {
+                path.push("blue", "purple");
                 showOnScreen(stepStr, path, res);
-                path = ["purple", "blue"];
-                console.log(path);
+                break;
+            }
+
+            else if (isOptimalSet(currArr) === "discard green") {   
+                path.push("white", "blue", "purple", "red");             
+                showOnScreen(stepStr, path, res);
                 break;
             }
 
@@ -116,6 +131,19 @@ function bfs() {
 
             visited.add(currStr);
         }
+    }
+
+    const resultContainer = document.getElementById('result-display');
+    resultContainer.innerHTML = '';
+
+    // Note: path is in reversed order!
+
+    for (let i = path.length - 1; i >= 0; i--) {
+        const newImg = document.createElement('img');
+        newImg.className = "weapon-btn";
+        newImg.src = `images/${path[i]}.webp`;
+        newImg.alt = path[i];
+        resultContainer.appendChild(newImg);
     }
 }
 
