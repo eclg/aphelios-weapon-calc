@@ -147,4 +147,12 @@ function bfs() {
     }
 }
 
-document.getElementById('calculate-btn').addEventListener('click', bfs);
+document.addEventListener('DOMContentLoaded', () => {
+    const calculateBtn = document.getElementById('calculate-btn');
+    if (calculateBtn) {
+        calculateBtn.addEventListener('click', bfs);
+    }
+    else {
+        console.error("calculateBtn not found!");
+    }
+});
