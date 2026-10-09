@@ -63,7 +63,7 @@ function showOnScreen(stepStr, path, res) {
 function bfs() {
     const messageText = document.getElementById('messageID');
     if (weaponQueue.size !== 5) {
-        messageText.textContent  = '<div id="messageID" class="message">Select All Weapons</div>';
+        messageText.textContent  = "Select All Weapons";
         return;
     }
     messageText.innerHTML = ``;
