@@ -147,4 +147,4 @@ function bfs() {
     }
 }
 
-document.getElementById('bfs-btn').addEventListener('click', bfs);
+document.getElementById('calculate-btn').addEventListener('click', bfs);

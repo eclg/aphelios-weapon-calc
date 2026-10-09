@@ -12,7 +12,7 @@
         <div class="wrapper">
             <div id="messageID" class="message"></div>
             <div class="border">
-                <div class="text">Select Your Weapons</div>
+                <div id="selector-text" class="text">Selector</div>
                 <div class="selector">
                     <button class="weapon-btn" data-weapon="green"><img src="images/green.webp" alt="Calibrum / Green"></button>
                     <button class="weapon-btn" data-weapon="red"><img src="images/red.webp" alt="Severum / Red"></button>
@@ -20,14 +20,34 @@
                     <button class="weapon-btn" data-weapon="blue"><img src="images/blue.webp" alt="Infernum / Blue"></button>
                     <button class="weapon-btn" data-weapon="white"><img src="images/white.webp" alt="Crescendum / White"></button> 
                 </div>
-                <div class="text">Seleceted Weapons</div>
+                <div class="text">Current Rotation</div>
                 <div id="weapon-queue" class="display"></div>
 
-                <button id="bfs-btn">Submit</button>
+                <button id="calculate-btn">Calculate</button>
 
-                <div id="result-text" class="text">Result</div>
+                <div id="result-text" class="text">Weapons To Drop</div>
                 <div id="result-display" class="result"></div>
-                
+            </div>
+            <div class="how-to-box">
+                <details id="how-to-use">
+                    <summary><h2>HOW TO USE</h2></summary>
+                    <ol>
+                        <li>Select your weapons by clicking on the weapon icons under "Selector"</li>
+                        <li>Click "Calculate" when all 5 weapons are added under "Current Rotation"</li>
+                        <li>"Weapons To Drop" tells you which weapons to drop. Drop your weapons in that order (left-to-right)</li>
+                        <li>Click the individual weapons on "Current Rotation" to remove from queue</li>
+                    </ol>
+                    <p>Currently, only red-white rotation is supported.</p>
+                </details>
+                <details id="what-is-it">
+                    <summary><h2>WHAT IS THIS</h2></summary>
+                    <p>This is a tool targeted towards new Aphelios players that sometimes go off 
+                        their optimal gun rotation and can't find a way to fix it.</p>
+                    <p>This tool does not find the quickest way to fix the rotation. Instead, it attempts to find an 
+                        optimal way to get back into it. This ensures that players don't have to hold one weapon and 
+                        burn out the other weapon just to fix their rotation, as doing so can be difficult.</p>
+        
+                </details>
             </div>
         </div>
     </main>
